@@ -1,26 +1,268 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf9f5;
+  --foreground: #132d45;
+  --primary: #174c73;
+  --secondary: #eb5b2a;
+  --teal: #1fa2b8;
+  --gold: #f4b11e;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins);
+  --font-display: var(--font-manrope);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logo-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.78) rotate(-8deg);
+  }
+
+  70% {
+    transform: scale(1.06) rotate(2deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+.page-enter {
+  animation: page-enter 650ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+.intro-stagger > * {
+  animation: intro-rise 700ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+.intro-stagger > *:nth-child(1) {
+  animation-delay: 100ms;
+}
+
+.intro-stagger > *:nth-child(2) {
+  animation-delay: 190ms;
+}
+
+.intro-stagger > *:nth-child(3) {
+  animation-delay: 280ms;
+}
+
+.intro-stagger > *:nth-child(4) {
+  animation-delay: 370ms;
+}
+
+.intro-stagger > *:nth-child(5) {
+  animation-delay: 460ms;
+}
+
+.intro-visual {
+  animation: intro-rise 850ms 220ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+.brand-mark {
+  animation: logo-pop 700ms 100ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+.hero-premium {
+  background:
+    radial-gradient(ellipse at 82% 18%, rgb(31 162 184 / 20%), transparent 29rem),
+    radial-gradient(ellipse at 5% 88%, rgb(235 91 42 / 10%), transparent 32rem),
+    linear-gradient(122deg, #102d45 0%, #123a56 55%, #0d293f 100%);
+}
+
+.page-intro {
+  margin-top: 1.5rem;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 2rem;
+  background:
+    radial-gradient(ellipse at 86% 20%, rgb(31 162 184 / 22%), transparent 25rem),
+    radial-gradient(ellipse at 5% 110%, rgb(235 91 42 / 10%), transparent 25rem),
+    linear-gradient(122deg, #102d45 0%, #123a56 58%, #0d293f 100%);
+  box-shadow: 0 30px 75px -52px rgb(18 49 74 / 70%);
+}
+
+.page-intro-ring {
+  position: absolute;
+  top: -17rem;
+  right: -5rem;
+  width: 34rem;
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+.page-intro-ring::after {
+  position: absolute;
+  inset: 2rem;
+  border: 1px solid rgb(255 255 255 / 6%);
+  border-radius: inherit;
+  content: "";
+}
+
+.hero-orb {
+  position: absolute;
+  z-index: 0;
+  width: 26rem;
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+.hero-orb::after {
+  position: absolute;
+  inset: 1.5rem;
+  border: 1px solid rgb(255 255 255 / 6%);
+  border-radius: inherit;
+  content: "";
+}
+
+.hero-orb-one {
+  top: -13rem;
+  right: -7rem;
+}
+
+.hero-orb-two {
+  bottom: -19rem;
+  left: 28%;
+  width: 34rem;
+  opacity: 0.55;
+}
+
+.hero-title-accent {
+  background: linear-gradient(100deg, #8de0e5 5%, #40bdcc 48%, #f4b11e 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-image-frame {
+  transform: rotate(1deg);
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.25, 1);
+}
+
+.hero-image-frame:hover {
+  transform: rotate(0) translateY(-0.4rem);
+}
+
+.hero-impact-card {
+  animation: intro-rise 800ms 500ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+.premium-card {
+  border: 1px solid rgb(19 45 69 / 7%);
+  box-shadow: 0 18px 55px -38px rgb(19 45 69 / 38%);
+  transition:
+    transform 350ms cubic-bezier(0.2, 0.7, 0.25, 1),
+    box-shadow 350ms ease,
+    border-color 350ms ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-5px);
+  border-color: rgb(31 162 184 / 25%);
+  box-shadow: 0 28px 65px -38px rgb(19 45 69 / 45%);
+}
+
+@media (max-width: 639px) {
+  .page-intro {
+    margin-top: 0.75rem;
+    border-radius: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), Arial, sans-serif;
+}
+
+::selection {
+  background: #d7f0f1;
+  color: #12314a;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgb(31 162 184 / 65%);
+  outline-offset: 3px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.section-shell {
+  margin-inline: auto;
+  width: min(100%, 1200px);
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .section-shell {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-shell {
+    padding-inline: 2rem;
+  }
 }
